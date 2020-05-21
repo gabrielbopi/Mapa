@@ -9,20 +9,23 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    <style>
-       #mapid { height: 320px; }
+       #mapid { height: 320px; width: 500px; }
    </style>
     <title>Mapa</title>
 </head>
 <body>
     <div id='mapid'></div>
     <script>
-        var mymap = L.map('mapid').setView([0, 0], 1);
+        const latitude = -16.0234032;
+        const longitude = -48.0700836;
+        const zoom = 14;
+        var mymap = L.map('mapid').setView([latitude, longitude], zoom);
        
         const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
         const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         const tiles = L.tileLayer(tileUrl, {attribution});
         tiles.addTo(mymap);
-    
+        L.marker([latitude, longitude]).addTo(mymap);
     </script>
 </body>
 </html>
